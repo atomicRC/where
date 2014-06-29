@@ -2,7 +2,7 @@
  This class is used for communication with the WEAR Device
  */
 
-package org.example.where;
+package org.example.where.util;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -30,6 +30,9 @@ import com.google.android.gms.plus.People;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 import com.google.android.gms.plus.model.people.PersonBuffer;
+
+import org.example.where.R;
+import org.example.where.application.WhereApplication;
 import org.example.where.service.WhereService;
 
 import java.io.IOException;
@@ -49,7 +52,7 @@ public class WearHelper {
         public HashMap<String,String> debugPeople = new HashMap<String, String>();
 
         public DebugHelperPeople() {
-          //  debugPeople.put("MATTHIAS THOMA", "matthiasthoma@gmail.com");
+            //  debugPeople.put("MATTHIAS THOMA", "matthiasthoma@gmail.com");
         }
     }
 
@@ -85,7 +88,7 @@ public class WearHelper {
     }
 
     public void registerReceiver(WhereService context) {
-   //     context.registerReceiver(mReceiver, new IntentFilter(ACTION_RESPONSE));
+        //     context.registerReceiver(mReceiver, new IntentFilter(ACTION_RESPONSE));
     }
 
     public void onPause(WhereApplication context) {
@@ -408,11 +411,11 @@ public class WearHelper {
                 return null;
             }
         }.execute(notifcationText, title);
-        }
+    }
 
     public void onResume(WhereApplication context) {
-         context.registerReceiver(mReceiver, new IntentFilter(ACTION_RESPONSE));
-        }
+        context.registerReceiver(mReceiver, new IntentFilter(ACTION_RESPONSE));
+    }
 
     public void cancelNotification() {
         NotificationManagerCompat.from(WhereApplication.getContext()).cancel(id);

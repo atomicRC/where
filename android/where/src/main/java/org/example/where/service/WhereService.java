@@ -12,8 +12,9 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import org.example.where.broadcast.GcmBroadcastReceiver;
 import org.example.where.activity.GooglePlayServicesActivity;
 import org.example.where.broadcast.WearBroadcastReceiver;
-import org.example.where.util.WearHelper;
+
 import org.example.where.application.WhereApplication;
+import org.example.where.util.WearHelper;
 import org.example.where.util.WhereHelper;
 import org.example.where.util.GetAddressTask;
 
@@ -37,11 +38,9 @@ public class WhereService extends Service {
 
         Log.i(TAG, "Service created.");
 
-        //TODO: create notification
         // Creates an initial notification. In a better Version of the app this should be an
         // always on command, so that you can initiate this from Android Wear without the need
         // of an Notification
-
         WhereApplication.getContext().getWearHelper().setupWear();
     }
 
@@ -61,7 +60,7 @@ public class WhereService extends Service {
     public void onDestroy() {
         super.onDestroy();
 
-        //TODO: destroy notification
+        WhereApplication.getContext().getWearHelper().cancelNotification();
 
         Log.i(TAG, "Service destroyed.");
     }
@@ -74,11 +73,11 @@ public class WhereService extends Service {
         // would look different, but it is a Hackaton :-)
 
         if (actionStr != null)
-        if (actionStr.equals(WearHelper.ACTION_RESPONSE)) {
-            WhereApplication.getContext().getWearHelper().processWearResponse(intent);
-            WearBroadcastReceiver.completeWakefulIntent(intent);
-            return ;
-        }
+            if (actionStr.equals(WearHelper.ACTION_RESPONSE)) {
+                WhereApplication.getContext().getWearHelper().processWearResponse(intent);
+                WearBroadcastReceiver.completeWakefulIntent(intent);
+                return ;
+            }
 
         GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(this);
         if (gcm == null) {
@@ -141,7 +140,7 @@ public class WhereService extends Service {
                             WhereHelper.sendLocation(name, "unavailable");
                         }
                     } else if (DISCLOSE.equals(action)) {
-                                                Log.i(TAG, "Location received from GCM: " + extras);
+                        Log.i(TAG, "Location received from GCM: " + extras);
 
                         //TODO: update notification with the received location
                         Message msg = Message.obtain();
