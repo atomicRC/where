@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/mainLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome"
+            android:id="@+id/tvWelcome"
+            android:paddingRight="5dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Display Name"
+            android:id="@+id/textViewDisplayName"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tvWelcome"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email address"
+            android:id="@+id/textViewEmailAddress"
+            android:layout_below="@+id/textViewDisplayName"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
+
+        <AutoCompleteTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter a contact's email address"
+            android:id="@+id/autoCompleteEmailAddress"
+            android:layout_below="@+id/textViewEmailAddress"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:inputType="textEmailAddress"/>
+
+
+        <LinearLayout android:id="@+id/layoutButtons"
+            android:layout_below="@id/autoCompleteEmailAddress"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check Registration (GAE)"
+                android:id="@+id/buttonCheckRegistration"
+                android:layout_below="@+id/autoCompleteEmailAddress"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find location (GAE)"
+                android:id="@+id/buttonLocate"
+                android:layout_below="@+id/buttonCheckRegistration"
+                android:layout_alignParentStart="true"
+                android:layout_alignEnd="@+id/buttonCheckRegistration"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Who "
+            android:id="@+id/tvWho"
+            android:textStyle="bold"
+            android:layout_below="@+id/layoutButtons"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="unknown"
+            android:id="@+id/textViewWho"
+            android:layout_alignTop="@+id/tvWho"
+            android:layout_alignStart="@+id/textViewWhen" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="When"
+            android:id="@+id/tvWhen"
+            android:textStyle="bold"
+            android:layout_below="@+id/tvWho"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="unknown"
+            android:id="@+id/textViewWhen"
+            android:layout_alignBaseline="@+id/tvWhen"
+            android:layout_alignBottom="@+id/tvWhen"
+            android:layout_toRightOf="@+id/tvWhere" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Where "
+            android:id="@+id/tvWhere"
+            android:textStyle="bold"
+            android:layout_below="@+id/tvWhen"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="unknown"
+            android:id="@+id/textViewWhere"
+            android:layout_alignBaseline="@+id/tvWhere"
+            android:layout_alignBottom="@+id/tvWhere"
+            android:layout_toRightOf="@+id/tvWhere" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last location request "
+            android:id="@+id/tvLastLocationRequest"
+            android:textStyle="bold"
+            android:layout_below="@+id/tvWhere"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="no location request so far."
+            android:id="@+id/textViewRequester"
+            android:layout_below="@+id/tvLastLocationRequest"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status:"
+            android:id="@+id/labelStatus"
+            android:textStyle="bold"
+            android:paddingTop="5px"
+            android:layout_below="@+id/textViewRequester"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="waiting"
+            android:id="@+id/textStatus"
+            android:layout_below="@+id/labelStatus"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>

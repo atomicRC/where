@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_item_logout"
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:title="@string/logout"
+        app:showAsAction="always"/>
+    <item android:id="@+id/menu_item_toggle_active"
+        android:icon="@drawable/locked"
+        android:title="@string/reject_location_queries"
+        app:showAsAction="never"/>
+    <item android:id="@+id/menu_item_current_location"
+        android:title="@string/current_location"
+        app:showAsAction="never"/>
+</menu>

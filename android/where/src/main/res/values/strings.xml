@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Where</string>
+    <string name="logout">Logout</string>
+    <string name="reject_location_queries">Reject location queries</string>
+    <string name="accept_location_queries">Accept location queries</string>
+    <string name="current_location">Current Location</string>
+</resources>

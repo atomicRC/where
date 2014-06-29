@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.example.where" >
+
+    <!-- so the Android application can send the registration ID to the 3rd party server -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- as GCM requires a Google account -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- Getting the user credentials and using the account picker -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+    <!-- so the Android application can register and receive messages -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <!-- so the application can keep the processor from sleeping when a message is received -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- to get an email address we need have access to the contacts API -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />>
+
+    <permission
+        android:name="org.example.where.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <!-- to prevent other Android applications from registering and receiving the Android application's messages. -->
+    <uses-permission android:name="org.example.where.permission.C2D_MESSAGE" />
+
+    <!-- access phone's location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+
+    <application
+        android:name=".application.WhereApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/directions"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activity.GooglePlayServicesActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".broadcast.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.example.gcm" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".broadcast.WearBroadcastReceiver">
+            <intent-filter>
+                <action android:name="org.example.where.WHEREIS" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <service
+            android:name=".service.WhereService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+    </application>
+
+</manifest>
